@@ -27,8 +27,13 @@ app.post('/signin', signIn)
 //error middleware
 
 app.use((err, req, res, next) => {
-    console.log(err)
-    res.json({message: "Fuuuck an error occured "})
+     if(err.type === 'auth'){
+        res.status(401).json({message:"Unauthorized"})
+     }else if(err.type ===  'input'){
+        res.status(400).json({message: "Invalid Input "})
+     }else{
+        res.status(500).json({message:"Ooopsie that was on our end "})
+     }
 
     
 })
