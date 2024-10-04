@@ -15,10 +15,7 @@ app.use((req,res,next) => {
     next()
 })
 app.get('/', (req, res) => {
-    console.log("Hello, first page from express")
-
-    res.status(200)
-    res.json({message:'hello',g:"ww"})
+  throw new Error('waaa waaa waaa kuna error apa')
 })
 
 app.use('/api',protect, router)
@@ -27,5 +24,13 @@ app.use('/api',protect, router)
 app.post('/user', createUser)
 //sign in user
 app.post('/signin', signIn)
+//error middleware
+
+app.use((err, req, res, next) => {
+    console.log(err)
+    res.json({message: "Fuuuck an error occured "})
+
+    
+})
 
 export default app
