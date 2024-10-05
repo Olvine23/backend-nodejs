@@ -15,7 +15,7 @@ app.use((req,res,next) => {
     next()
 })
 app.get('/', (req, res) => {
-  throw new Error('waaa waaa waaa kuna error apa')
+  res.json({message: 'Hello'})
 })
 
 app.use('/api',protect, router)
