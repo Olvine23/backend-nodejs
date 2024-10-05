@@ -1,5 +1,14 @@
+import * as user from '../users'
+
 describe('user handler', () => {
-    it('should tell me 1 is 1', () => {
-        expect(1).toBe(1)
+    it('it should create a new user',async () => {
+        const req = {body:{"username":"hello", "password":"hi"}}
+        const res  = {json({token}){
+            console.log(token)
+            expect(token).toBeTruthy()
+        }}
+
+
+     await user.createUser(req, res, () => {})
     })
 })
