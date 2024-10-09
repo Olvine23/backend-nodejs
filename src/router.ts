@@ -6,6 +6,7 @@ import {
   deleteProduct,
   getOneProduct,
   getProducts,
+  updateProduct,
 } from "./handlers/product";
 import {
   createUpdate,
@@ -25,8 +26,9 @@ router.get("/product/:id", getOneProduct);
 router.put(
   "/product/:id",
   body("name").isString(),
+  body("productDescription"),
   inputValidation,
-  (req, res) => {}
+  updateProduct
 );
 
 //create a product
@@ -34,6 +36,7 @@ router.put(
 router.post(
   "/product",
   body("name").isString(),
+  body("productDescription").isString(),
   inputValidation,
   createProduct
 );

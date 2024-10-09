@@ -38,6 +38,7 @@ export const createProduct = async (req, res, next) => {
     const product = await prisma.product.create({
       data: {
         name: req.body.name,
+        productDescription: req.body.productDescription,
         belongsToId: req.user.id,
       },
     });
@@ -59,6 +60,7 @@ export const updateProduct = async (req, res) => {
     },
     data: {
       name: req.body.name,
+      productDescription: req.body.productDescription
     },
   });
 
